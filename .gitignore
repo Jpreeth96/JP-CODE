@@ -1,0 +1,9 @@
+/.DS_Store
+/.vscode
+/ALTER TABLE j2 ob_applied.sql
+/ALTER TABLE job_applied.sql
+/INSERT INTO job_applied.sql
+/UPDATE job_applied.sql
+/csv_files
+/sql_course.session.sql
+/test.sql
