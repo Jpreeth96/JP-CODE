@@ -1,0 +1,230 @@
+/*
+Q: What skills are required for the top paying data analyst jobs?
+- Use the top 20 highest paying Data Analyst jobs from the first query (Excluding Gurugram from job loaction)
+- Add the specific skills required for these roles 
+- Why? It provides details on which high paying jobs demand certain skills, helping job seekers understand which skills to focus on developing.
+*/
+
+WITH top_paying_jobs AS (
+SELECT
+    job_id,
+    job_title,
+    job_no_degree_mention,
+    job_location,
+    salary_year_avg,
+    name AS company_name
+FROM
+    job_postings_fact
+LEFT JOIN
+    company_dim ON job_postings_fact.company_id = company_dim.company_id
+WHERE
+    job_title_short = 'Data Analyst' AND
+    (job_location LIKE '%India%' OR job_location LIKE '%Australia%') AND
+    job_location NOT LIKE '%Gurugram%' AND
+    salary_year_avg IS NOT NULL
+)
+
+SELECT 
+    top_paying_jobs.*,
+    skills
+FROM top_paying_jobs
+INNER JOIN skills_job_dim ON top_paying_jobs.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+ORDER BY
+    salary_year_avg DESC
+LIMIT 20;
+
+
+/*
+ Skill-Based Insights from Top-Paying Data Jobs
+
+* 16 unique technical skills are listed across all top-paying roles in the dataset.
+* Most in-demand skills include: Oracle, SAP, SQL, Python, and MongoDB.
+* These skills highlight a strong emphasis on database management, enterprise-level systems, backend data engineering, and modern scripting tools.
+* There is a clear hybrid demand, where employers seek professionals skilled in both legacy technologies (Oracle, SAP) and modern tools (Python, MongoDB).
+* The frequent appearance of SQL and Python confirms that data querying and scripting are fundamental skills for high-paying roles.
+* Repeated job IDs paired with different skills indicate that each role typically requires 3–5 complementary technical skills.
+* No soft skills are mentioned — the dataset is purely focused on specialized hard skills that directly influence earning potential. */
+
+[
+  {
+    "job_id": 1041666,
+    "job_title": "Data Architect - Data Migration",
+    "job_no_degree_mention": false,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "oracle"
+  },
+  {
+    "job_id": 1041666,
+    "job_title": "Data Architect - Data Migration",
+    "job_no_degree_mention": false,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "sap"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "sql"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "python"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "mongodb"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "mongo"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "mysql"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "postgresql"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "sql server"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "mongodb"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "azure"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "aws"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "redshift"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "oracle"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "spark"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "hadoop"
+  },
+  {
+    "job_id": 954793,
+    "job_title": "Data Architect 2023",
+    "job_no_degree_mention": true,
+    "job_location": "Bengaluru, Karnataka, India",
+    "salary_year_avg": "165000.0",
+    "company_name": "Bosch Group",
+    "skills": "power bi"
+  },
+  {
+    "job_id": 781346,
+    "job_title": "Data Architect",
+    "job_no_degree_mention": false,
+    "job_location": "Hyderabad, Telangana, India",
+    "salary_year_avg": "163782.0",
+    "company_name": "Eagle Genomics Ltd",
+    "skills": "gdpr"
+  },
+  {
+    "job_id": 406320,
+    "job_title": "Data Architect",
+    "job_no_degree_mention": true,
+    "job_location": "Hyderabad, Telangana, India",
+    "salary_year_avg": "163782.0",
+    "company_name": "Eagle Genomics Ltd",
+    "skills": "sql"
+  },
+  {
+    "job_id": 406320,
+    "job_title": "Data Architect",
+    "job_no_degree_mention": true,
+    "job_location": "Hyderabad, Telangana, India",
+    "salary_year_avg": "163782.0",
+    "company_name": "Eagle Genomics Ltd",
+    "skills": "python"
+  }
+]
