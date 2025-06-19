@@ -134,7 +134,7 @@ ORDER BY
     salary_year_avg DESC
 LIMIT 20;
 ```
-![Top paying skills](assets/8FCA833A-C211-4772-92AA-37A964D0E5A6.png)
+![Top paying skills](image.png)
 
 The goal of the code is to find the most in-demand skills among the top 20 highest-paying Data Analyst jobs in India and Australia
 - It filters job postings by role, location, salary, and joins them with skill data using CTEs and inner joins
