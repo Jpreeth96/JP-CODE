@@ -20,6 +20,8 @@ ORDER BY
     avg_salary DESC
 LIMIT 25;
 
+
+
 /*
 
 Sure — here’s the cleaned-up version without asterisks, ready to copy-paste directly:
